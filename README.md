@@ -28,7 +28,7 @@ CXperts is an Egyptian-based Business Process Outsourcing (BPO) company built on
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/cxperts.git
+   git clone https://github.com/ibrahimdevop21/cxpert2.0demo.git
    cd cxperts
    ```
 
