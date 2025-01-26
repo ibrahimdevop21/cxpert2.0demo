@@ -1,0 +1,73 @@
+---
+const markets = {
+  regions: [
+    "North America",
+    "Europe",
+    "Middle East",
+    "Africa",
+    "Asia Pacific"
+  ],
+  languages: [
+    "English",
+    "Arabic",
+    "French",
+    "German",
+    "Spanish",
+    "Italian"
+  ],
+  industries: [
+    "Technology",
+    "E-commerce",
+    "Healthcare",
+    "Financial Services",
+    "Telecommunications",
+    "Travel & Hospitality"
+  ]
+};
+---
+
+<section id="markets" class="py-20 px-4 md:px-8 bg-gradient-to-b from-blue-900/20 to-black">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-pink-600">
+      Markets & Languages
+    </h2>
+    
+    <div class="grid md:grid-cols-3 gap-12">
+      <div class="bg-white/5 backdrop-blur-lg p-8 rounded-xl">
+        <h3 class="text-2xl font-semibold mb-6 text-blue-400">Global Regions</h3>
+        <ul class="space-y-3">
+          {markets.regions.map((region) => (
+            <li class="text-gray-300 flex items-center">
+              <span class="text-blue-400 mr-2">•</span>
+              {region}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="bg-white/5 backdrop-blur-lg p-8 rounded-xl">
+        <h3 class="text-2xl font-semibold mb-6 text-blue-400">Languages</h3>
+        <ul class="space-y-3">
+          {markets.languages.map((language) => (
+            <li class="text-gray-300 flex items-center">
+              <span class="text-blue-400 mr-2">•</span>
+              {language}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="bg-white/5 backdrop-blur-lg p-8 rounded-xl">
+        <h3 class="text-2xl font-semibold mb-6 text-blue-400">Industries</h3>
+        <ul class="space-y-3">
+          {markets.industries.map((industry) => (
+            <li class="text-gray-300 flex items-center">
+              <span class="text-blue-400 mr-2">•</span>
+              {industry}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

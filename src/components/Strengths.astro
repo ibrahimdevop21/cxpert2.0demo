@@ -1,0 +1,52 @@
+---
+const strengths = [
+  {
+    title: "Global Reach",
+    description: "Operating across multiple time zones with multilingual support capabilities",
+    icon: "🌍"
+  },
+  {
+    title: "Technical Excellence",
+    description: "State-of-the-art technology infrastructure and AI-powered solutions",
+    icon: "⚡"
+  },
+  {
+    title: "Quality Assurance",
+    description: "Rigorous quality control processes and continuous improvement",
+    icon: "✨"
+  },
+  {
+    title: "Skilled Workforce",
+    description: "Highly trained professionals with industry-specific expertise",
+    icon: "👥"
+  },
+  {
+    title: "Scalable Solutions",
+    description: "Flexible and scalable services that grow with your business",
+    icon: "📈"
+  },
+  {
+    title: "24/7 Support",
+    description: "Round-the-clock customer service and technical support",
+    icon: "🔄"
+  }
+];
+---
+
+<section id="strengths" class="py-20 px-4 md:px-8 bg-gradient-to-b from-black to-blue-900/20">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-pink-600">
+      Our Key Strengths
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {strengths.map((strength) => (
+        <div class="bg-white/5 backdrop-blur-lg p-6 rounded-xl hover:transform hover:scale-105 transition-all duration-300">
+          <div class="text-4xl mb-4">{strength.icon}</div>
+          <h3 class="text-xl font-semibold mb-3 text-white">{strength.title}</h3>
+          <p class="text-gray-300">{strength.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

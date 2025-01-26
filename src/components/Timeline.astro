@@ -1,0 +1,62 @@
+---
+const milestones = [
+  {
+    year: "2020",
+    title: "Foundation",
+    description: "CXperts was established with a vision to revolutionize customer experience"
+  },
+  {
+    year: "2021",
+    title: "Market Expansion",
+    description: "Expanded operations to serve international markets and multiple industries"
+  },
+  {
+    year: "2022",
+    title: "Technology Integration",
+    description: "Implemented AI-powered solutions and advanced analytics capabilities"
+  },
+  {
+    year: "2023",
+    title: "Global Recognition",
+    description: "Achieved significant growth and recognition in the BPO industry"
+  },
+  {
+    year: "2024",
+    title: "Innovation Hub",
+    description: "Launched innovation center for developing cutting-edge CX solutions"
+  }
+];
+---
+
+<section id="timeline" class="py-20 px-4 md:px-8">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-pink-600">
+      Our Journey
+    </h2>
+    
+    <div class="relative">
+      <!-- Timeline line -->
+      <div class="absolute left-4 md:left-1/2 h-full w-0.5 bg-gradient-to-b from-blue-400 to-pink-600"></div>
+      
+      <div class="space-y-12">
+        {milestones.map((milestone, index) => (
+          <div class={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            <div class="flex-1 md:w-1/2"></div>
+            
+            <!-- Timeline dot -->
+            <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-400"></div>
+            
+            <!-- Content -->
+            <div class={`flex-1 ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
+              <div class="bg-white/5 backdrop-blur-lg p-6 rounded-xl">
+                <div class="text-blue-400 text-2xl font-bold mb-2">{milestone.year}</div>
+                <h3 class="text-xl font-semibold text-white mb-2">{milestone.title}</h3>
+                <p class="text-gray-300">{milestone.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

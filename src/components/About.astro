@@ -1,0 +1,51 @@
+---
+const aboutData = {
+  overview: "CXperts is a leading Business Process Outsourcing (BPO) company based in Egypt, specializing in delivering exceptional customer experiences through innovative solutions.",
+  mission: "To empower businesses with superior customer service solutions while creating meaningful employment opportunities in Egypt.",
+  vision: "To be the most trusted partner in customer experience excellence, setting new standards in the BPO industry.",
+  values: [
+    "Excellence in Service",
+    "Innovation & Adaptability",
+    "People-First Approach",
+    "Integrity & Transparency"
+  ]
+};
+---
+
+<section id="about" class="py-20 px-4 md:px-8">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-pink-600">
+      About CXperts
+    </h2>
+    
+    <div class="grid md:grid-cols-2 gap-12">
+      <div class="space-y-8">
+        <div class="bg-white/5 backdrop-blur-lg p-6 rounded-xl">
+          <h3 class="text-xl font-semibold mb-4 text-blue-400">Overview</h3>
+          <p class="text-gray-300">{aboutData.overview}</p>
+        </div>
+        
+        <div class="bg-white/5 backdrop-blur-lg p-6 rounded-xl">
+          <h3 class="text-xl font-semibold mb-4 text-blue-400">Our Mission</h3>
+          <p class="text-gray-300">{aboutData.mission}</p>
+        </div>
+      </div>
+      
+      <div class="space-y-8">
+        <div class="bg-white/5 backdrop-blur-lg p-6 rounded-xl">
+          <h3 class="text-xl font-semibold mb-4 text-blue-400">Our Vision</h3>
+          <p class="text-gray-300">{aboutData.vision}</p>
+        </div>
+        
+        <div class="bg-white/5 backdrop-blur-lg p-6 rounded-xl">
+          <h3 class="text-xl font-semibold mb-4 text-blue-400">Our Values</h3>
+          <ul class="list-disc list-inside text-gray-300 space-y-2">
+            {aboutData.values.map((value) => (
+              <li>{value}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
