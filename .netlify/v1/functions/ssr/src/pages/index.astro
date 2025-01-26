@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.jsx';
+import Hero from '../components/Hero.jsx';
+import Services from '../components/Services.astro';
+import TrustedBy from '../components/TrustedBy.jsx';
+
+const featuredServices = {
+  title: "Featured Services",
+  services: [
+    {
+      title: "Customer Support",
+      description: "24/7 multilingual customer support across multiple channels."
+    },
+    {
+      title: "Technical Support",
+      description: "Expert technical assistance for software and hardware."
+    },
+    {
+      title: "AI Solutions",
+      description: "Cutting-edge AI-enhanced customer service solutions."
+    }
+  ]
+};
+---
+
+<Layout title="CXperts - Elevating Customer Experience">
+  <Navigation client:load />
+  <main>
+    <Hero client:load />
+    
+    <TrustedBy client:load />
+  </main>
+</Layout>
