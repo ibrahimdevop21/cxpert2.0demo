@@ -10,6 +10,7 @@ export default defineConfig({
     webAnalytics: {
       enabled: true,
     },
-    functionPerRoute: false
+    functionPerRoute: false,
+    nodeVersion: 'lts'
   }),
 });
