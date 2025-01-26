@@ -1,9 +1,10 @@
 {
+  "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "functions": {
-    "api/*.js": {}
-  },
+  "builds": [
+    { "src": "api/*.js", "use": "@vercel/node" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
