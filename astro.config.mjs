@@ -7,7 +7,7 @@ export default defineConfig({
   integrations: [react(), tailwind()],
   output: 'server',
   adapter: vercel({
-    runtime: 'nodejs18.x',
-    analytics: true
+    analytics: true,
+    maxDuration: 60
   }),
 });
