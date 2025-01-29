@@ -27,7 +27,7 @@ export default function Hero() {
       <div className='absolute inset-0'>
         <video
           ref={videoRef}
-          className='w-full h-full object-cover opacity-50'
+          className='w-full h-full object-cover md:object-fit opacity-50'
           autoPlay
           loop
           muted
@@ -62,7 +62,7 @@ export default function Hero() {
       <div className='absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-transparent'></div>
 
       {/* Content */}
-      <div className='relative z-10 h-full flex flex-col items-center justify-center px-4 md:px-8'>
+      {/* <div className='relative z-10 h-full flex flex-col items-center justify-center px-4 md:px-8'>
         <div className='max-w-6xl mx-auto text-center'>
           <h1 className='text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600'>
             Welcome to CXperts
@@ -85,7 +85,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

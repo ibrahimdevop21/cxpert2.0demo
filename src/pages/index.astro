@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation.jsx';
 import Hero from '../components/Hero.jsx';
 import Services from '../components/Services.astro';
 import TrustedBy from '../components/TrustedBy.jsx';
+import Testimonials from '../components/Testimonials.astro'
 
 const featuredServices = {
   title: "Featured Services",
@@ -28,7 +29,7 @@ const featuredServices = {
   <Navigation client:load />
   <main>
     <Hero client:load />
-    
-    <TrustedBy client:load />
+    <TrustedBy  />
+    <Testimonials />
   </main>
 </Layout>

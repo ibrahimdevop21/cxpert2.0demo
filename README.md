@@ -10,14 +10,13 @@ CXperts is an Egyptian-based Business Process Outsourcing (BPO) company built on
 
 - **Framework:** [Astro](https://astro.build/) with [React](https://reactjs.org/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Animations:** [Anime.js](https://animejs.com/)
-- **Deployment:** [Vercel](https://vercel.com)
+- **Deployment:** [Netlify](https://www.netlify.com)
 
 ## ✨ Features
 
 - 🎨 Modern, responsive design
 - 🌐 Server-side rendering (SSR)
-- 🎭 Smooth scroll-based animations
+- 🎭 Smooth scroll animations
 - 🖼️ Dynamic video backgrounds
 - 📱 Mobile-first approach
 - 🔒 Security headers configured

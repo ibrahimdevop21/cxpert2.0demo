@@ -1,0 +1,50 @@
+---
+const testimonials = [
+  {
+    name: "Mohamed Haroun",
+    title: "Co-Founder, KitesDev",
+    quote: "CXperts has made us see how reliability and consistency can create magic.",
+  },
+  {
+    name: "CEO",
+    title: "G2A Consulting",
+    quote: "CXperts has rapidly familiarized itself with the environment to suit a challenging market and derived outstanding performance. We're very proud to be a part of this team.",
+  },
+];
+---
+
+<section class="py-16 backdrop-blur-lg bg-[#0c0c1d]/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-center mb-4 bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
+        Client Testimonials
+      </h2>
+      <p class="text-lg text-gray-300 mt-2">
+        Hear from our valued partners and clients
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="group relative p-8 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 hover:bg-white/10">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+          <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+            "{testimonial.quote}"
+          </p>
+          <div class="font-bold text-blue-400">{testimonial.name}</div>
+          <div class="text-gray-400">{testimonial.title}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Add these if you're not using Tailwind's CDN version */
+  .backdrop-blur-lg {
+    backdrop-filter: blur(16px);
+  }
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+</style>
