@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import anime from 'animejs/lib/anime.es.js';
 
 export const useScrollAnimation = (options = {}) => {
   const elementRef = useRef(null);
@@ -14,17 +13,27 @@ export const useScrollAnimation = (options = {}) => {
       translateY: [50, 0],
       duration: 800,
       easing: 'easeOutCubic',
-      delay: anime.stagger(100),
+      delay: 100,
       ...options
+    };
+
+    const animateElement = (target) => {
+      target.style.transition = `all ${defaultOptions.duration}ms ${defaultOptions.easing}`;
+      target.style.opacity = defaultOptions.opacity[1];
+      target.style.transform = `translateY(${defaultOptions.translateY[1]}px)`;
     };
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (animationRef.current) animationRef.current.pause();
-            
-            animationRef.current = anime({
+            Array.from(element.children).forEach((child, index) => {
+              child.style.opacity = defaultOptions.opacity[0];
+              child.style.transform = `translateY(${defaultOptions.translateY[0]}px)`;
+              child.style.transition = `none`
+              setTimeout(()=> animateElement(child), index * defaultOptions.delay);
+            })
+            /*animationRef.current = anime({
               targets: element.children,
               ...defaultOptions,
               begin: () => {
@@ -32,7 +41,7 @@ export const useScrollAnimation = (options = {}) => {
               }
             });
             
-            observer.unobserve(element);
+            observer.unobserve(element);*/observer.unobserve(element);
           }
         });
       },
