@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import CustomerCounter from './ui/CustomerCounter';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -63,15 +64,20 @@ export default function Navigation() {
         }`}
       >
         <div className='relative flex items-center justify-between h-14'>
-          {/* Logo */}
-          <motion.a
-            href='/'
-            className='flex items-center space-x-3'
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <img src='/cxpert.webp' alt='CXperts Logo' className='h-8 w-auto' />
-          </motion.a>
+          {/* Logo and Counter Section */}
+          <div className="flex items-center space-x-4 sm:space-x-6">
+            <motion.a
+              href='/'
+              className='flex items-center'
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <img src='/cxpert.webp' alt='CXperts Logo' className='h-8 w-auto' />
+            </motion.a>
+
+            {/* Customer Counter - Show on all screens */}
+            <CustomerCounter />
+          </div>
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex md:items-center md:space-x-6 lg:space-x-8'>
@@ -91,36 +97,47 @@ export default function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <motion.button
-            type='button'
-            className='md:hidden inline-flex items-center justify-center p-2.5 rounded-lg text-blue-200/80 hover:text-yellow-400 hover:bg-blue-400/10 focus:outline-none transition-colors'
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <span className='sr-only'>Open main menu</span>
-            <svg
-              className='h-6 w-6'
-              fill='none'
-              viewBox='0 0 24 24'
-              strokeWidth='2'
-              stroke='currentColor'
+          <div className='flex md:hidden'>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className='inline-flex items-center justify-center p-2 rounded-md text-blue-200/80 hover:text-yellow-400 focus:outline-none'
             >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M6 18L18 6M6 6l12 12'
-                />
+              <span className='sr-only'>Open main menu</span>
+              {!isMobileMenuOpen ? (
+                <svg
+                  className='block h-6 w-6'
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'
+                  aria-hidden='true'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M4 6h16M4 12h16M4 18h16'
+                  />
+                </svg>
               ) : (
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M4 6h16M4 12h16m-7 6h7'
-                />
+                <svg
+                  className='block h-6 w-6'
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'
+                  aria-hidden='true'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M6 18L18 6M6 6l12 12'
+                  />
+                </svg>
               )}
-            </svg>
-          </motion.button>
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
@@ -130,20 +147,17 @@ export default function Navigation() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
               className='md:hidden'
             >
-              <div className='pt-2 pb-4 space-y-1'>
+              <div className='pt-2 pb-3 space-y-1'>
                 {navItems.map((item) => (
-                  <motion.a
+                  <a
                     key={item.name}
                     href={item.href}
-                    className='block px-3 py-2 text-base font-medium text-blue-200/80 hover:text-yellow-400 hover:bg-blue-400/10 rounded-lg transition-colors'
-                    whileHover={{ x: 10 }}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    className='block px-3 py-2 text-base font-medium text-blue-200/80 hover:text-yellow-400 transition-colors'
                   >
                     {item.name}
-                  </motion.a>
+                  </a>
                 ))}
               </div>
             </motion.div>

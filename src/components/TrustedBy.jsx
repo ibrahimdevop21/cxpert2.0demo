@@ -95,7 +95,7 @@ export default function OurPartners() {
                   key={index}
                   className="shrink-0 group relative px-4"
                   whileHover={{ 
-                    scale: 1.05,
+                    scale: 1.02,
                     transition: { 
                       type: "spring",
                       stiffness: 300,
@@ -104,32 +104,38 @@ export default function OurPartners() {
                   }}
                 >
                   <div className="relative">
-                    {/* Glow effect */}
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 rounded-2xl opacity-0 group-hover:opacity-100 blur transition duration-500 group-hover:duration-200" />
+                    {/* Subtle glow effect */}
+                    <div className="absolute -inset-[1px] bg-gradient-to-r from-blue-400/30 via-yellow-400/30 to-blue-400/30 rounded-xl opacity-0 group-hover:opacity-100 blur-sm transition duration-500" />
                     
-                    <div className="w-72 h-72 rounded-2xl bg-gradient-to-br from-blue-900/40 to-blue-800/40 backdrop-blur-sm border border-blue-400/20 p-1.5 overflow-hidden relative">
-                      <div className="w-full h-full rounded-xl flex flex-col bg-gradient-to-br from-blue-950/50 to-blue-900/50">
+                    <div className="w-80 rounded-xl bg-gradient-to-br from-white/[0.05] to-white/[0.01] backdrop-blur-sm border border-white/[0.05] overflow-hidden relative">
+                      <div className="w-full flex flex-col">
                         {/* Logo Container */}
-                        <div className="h-44 p-8 flex items-center justify-center transform group-hover:-translate-y-2 transition-transform duration-300">
+                        <div className="h-32 p-6 flex items-center justify-center bg-gradient-to-b from-blue-950/20 to-transparent">
                           <img
                             src={logo.src}
                             alt={logo.alt}
-                            className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110 brightness-0 invert opacity-70 group-hover:opacity-100"
+                            className="max-w-[180px] max-h-[80px] object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-105 brightness-0 invert opacity-60 group-hover:opacity-100"
                           />
                         </div>
                         
                         {/* Description */}
-                        <div className="flex-1 p-6 text-center transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                          <p className="text-base font-medium bg-gradient-to-r from-blue-400 to-yellow-400 text-transparent bg-clip-text mb-2">{logo.alt}</p>
-                          <p className="text-sm text-blue-200/80 line-clamp-2 mb-3">{logo.description}</p>
-                          <span className="inline-block px-4 py-1 text-xs font-medium text-yellow-400 bg-yellow-400/10 rounded-full border border-yellow-400/20">
-                            {logo.industry}
-                          </span>
+                        <div className="p-6 pt-4">
+                          <div className="flex items-center justify-between mb-3">
+                            <p className="text-base font-medium text-blue-100 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-yellow-400 group-hover:bg-clip-text transition-all duration-300">
+                              {logo.alt}
+                            </p>
+                            <span className="px-3 py-1 text-[10px] uppercase tracking-wider font-medium text-yellow-400/80 bg-yellow-400/[0.03] rounded-full border border-yellow-400/[0.06]">
+                              {logo.industry}
+                            </span>
+                          </div>
+                          <p className="text-sm text-blue-300/50 group-hover:text-blue-200/70 line-clamp-2 transition-colors duration-300">
+                            {logo.description}
+                          </p>
                         </div>
                       </div>
 
-                      {/* Hover gradient overlay */}
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-blue-400/0 via-transparent to-transparent opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+                      {/* Subtle highlight */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-400/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
                   </div>
                 </motion.div>
@@ -137,8 +143,8 @@ export default function OurPartners() {
             </div>
 
             {/* Fade Edges */}
-            <div className="absolute inset-y-0 left-0 w-72 bg-gradient-to-r from-[#020617] via-[#020617]/80 to-transparent z-10" />
-            <div className="absolute inset-y-0 right-0 w-72 bg-gradient-to-l from-[#020617] via-[#020617]/80 to-transparent z-10" />
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#020617] to-transparent z-10" />
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#020617] to-transparent z-10" />
           </div>
         </div>
       </div>

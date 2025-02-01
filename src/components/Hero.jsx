@@ -127,7 +127,7 @@ export default function Hero() {
 
           {/* Stats Section */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-r from-blue-900/40 to-blue-800/40 backdrop-blur-sm border-t border-blue-400/20"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-r from-blue-900/10 to-blue-800/10 backdrop-blur-sm border-t border-blue-400/10"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -138,8 +138,8 @@ export default function Hero() {
                 className="group relative"
                 variants={itemVariants}
               >
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 rounded-2xl opacity-0 group-hover:opacity-100 blur transition duration-500 group-hover:duration-200"></div>
-                <div className="relative h-full p-6 rounded-2xl bg-gradient-to-br from-blue-900/40 to-blue-800/40 backdrop-blur-sm border border-blue-400/20 text-center">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600/50 to-yellow-400/50 rounded-2xl opacity-0 group-hover:opacity-100 blur transition duration-500 group-hover:duration-200"></div>
+                <div className="relative h-full p-6 rounded-2xl bg-gradient-to-br from-blue-900/20 to-blue-800/20 backdrop-blur-sm border border-blue-400/10 text-center">
                   <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-yellow-400 text-transparent bg-clip-text mb-3">
                     {stat.number}
                   </div>
