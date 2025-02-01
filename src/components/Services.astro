@@ -31,32 +31,44 @@ const services = {
 };
 ---
 
-<section id="services" class="py-20 px-4 md:px-8">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-pink-600">
+<section id="services" class="py-24 relative">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-6 bg-gradient-to-r from-blue-400 to-yellow-400 text-transparent bg-clip-text">
       Our Services
     </h2>
+    <p class="text-lg text-blue-200/80 text-center max-w-2xl mx-auto mb-16">
+      Comprehensive solutions designed to elevate your customer experience and drive business growth
+    </p>
 
     <div class="space-y-16">
       <div>
-        <h3 class="text-2xl font-semibold mb-8 text-center text-blue-400">Core Services</h3>
+        <h3 class="text-2xl font-semibold mb-8 text-center bg-gradient-to-r from-blue-400 to-yellow-400 text-transparent bg-clip-text">Core Services</h3>
         <div class="grid md:grid-cols-3 gap-8">
           {services.core.map((service) => (
-            <div class="bg-white/5 backdrop-blur-lg p-6 rounded-xl hover:transform hover:scale-105 transition-all duration-300">
-              <h4 class="text-xl font-semibold mb-4 text-white">{service.title}</h4>
-              <p class="text-gray-300">{service.description}</p>
+            <div class="group relative">
+              <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 rounded-2xl opacity-0 group-hover:opacity-100 blur transition duration-500 group-hover:duration-200"></div>
+              <div class="relative h-full p-8 rounded-2xl bg-gradient-to-br from-blue-900/40 to-blue-800/40 backdrop-blur-sm border border-blue-400/20 flex flex-col">
+                <h4 class="text-xl font-semibold mb-4 bg-gradient-to-r from-blue-400 to-yellow-400 text-transparent bg-clip-text">{service.title}</h4>
+                <p class="text-blue-200/80">{service.description}</p>
+                <div class="absolute inset-0 rounded-2xl bg-gradient-to-t from-blue-400/0 via-transparent to-transparent opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              </div>
             </div>
           ))}
         </div>
       </div>
 
       <div>
-        <h3 class="text-2xl font-semibold mb-8 text-center text-blue-400">Specialized Services</h3>
+        <h3 class="text-2xl font-semibold mb-8 text-center bg-gradient-to-r from-blue-400 to-yellow-400 text-transparent bg-clip-text">Specialized Services</h3>
         <div class="grid md:grid-cols-3 gap-8">
           {services.specialized.map((service) => (
-            <div class="bg-white/5 backdrop-blur-lg p-6 rounded-xl hover:transform hover:scale-105 transition-all duration-300">
-              <h4 class="text-xl font-semibold mb-4 text-white">{service.title}</h4>
-              <p class="text-gray-300">{service.description}</p>
+            <div class="group relative">
+              <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-yellow-400 rounded-2xl opacity-0 group-hover:opacity-100 blur transition duration-500 group-hover:duration-200"></div>
+              <div class="relative h-full p-8 rounded-2xl bg-gradient-to-br from-blue-900/40 to-blue-800/40 backdrop-blur-sm border border-blue-400/20 flex flex-col">
+                <h4 class="text-xl font-semibold mb-4 bg-gradient-to-r from-blue-400 to-yellow-400 text-transparent bg-clip-text">{service.title}</h4>
+                <p class="text-blue-200/80">{service.description}</p>
+                <div class="absolute inset-0 rounded-2xl bg-gradient-to-t from-blue-400/0 via-transparent to-transparent opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              </div>
             </div>
           ))}
         </div>
