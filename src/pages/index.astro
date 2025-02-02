@@ -4,26 +4,8 @@ import Navigation from '../components/Navigation.jsx';
 import Hero from '../components/Hero.jsx';
 import AnimatedBackground from '../components/ui/AnimatedBackground.jsx';
 import OurPartners from '../components/TrustedBy.jsx';
-import Services from '../components/Services.astro';
+import Services from '../components/Services.jsx';
 import Testimonials from '../components/Testimonials';
-
-const featuredServices = {
-  title: "Featured Services",
-  services: [
-    {
-      title: "Customer Support",
-      description: "24/7 multilingual customer support across multiple channels."
-    },
-    {
-      title: "Technical Support",
-      description: "Expert technical assistance for software and hardware."
-    },
-    {
-      title: "AI Solutions",
-      description: "Cutting-edge AI-enhanced customer service solutions."
-    }
-  ]
-};
 ---
 
 <Layout title="CXperts - Elevating Customer Experience">
@@ -33,8 +15,8 @@ const featuredServices = {
     <div id="about">
       <OurPartners client:load />
     </div>
-    <div id="services">
-      <Services />
+    <div>
+      <Services client:load />
     </div>
     <div id="testimonials">
       <Testimonials client:load />
