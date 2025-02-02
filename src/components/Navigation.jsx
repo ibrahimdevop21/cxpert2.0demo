@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CustomerCounter from './ui/CustomerCounter';
+import { useScrollTo } from '../hooks/useScrollTo';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const scrollTo = useScrollTo();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,13 +16,33 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMobileMenuOpen && !event.target.closest('.mobile-menu-container')) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isMobileMenuOpen]);
+
   const navItems = [
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'About', href: '/about', id: 'about' },
+    { name: 'Services', href: '/services', id: 'services' },
+    { name: 'Blog', href: '/blog', id: 'blog' },
+    { name: 'Careers', href: '/careers', id: 'careers' },
+    { name: 'Contact', href: '/contact', id: 'contact' },
   ];
+
+  const handleNavClick = (e, id) => {
+    if (id && e.currentTarget.href.startsWith('#')) {
+      e.preventDefault();
+      scrollTo(id);
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   const navVariants = {
     hidden: { y: -100, opacity: 0 },
@@ -85,10 +107,11 @@ export default function Navigation() {
               <motion.a
                 key={item.name}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.id)}
                 variants={menuItemVariants}
                 custom={i}
-                className='text-sm font-medium text-blue-200/80 hover:text-yellow-400 transition-colors'
-                whileHover={{ scale: 1.05 }}
+                className='text-sm font-medium text-blue-200/80 hover:text-yellow-400 transition-colors cursor-pointer'
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 {item.name}
@@ -147,17 +170,33 @@ export default function Navigation() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className='md:hidden'
+              className='md:hidden mobile-menu-container'
+              style={{
+                position: 'absolute',
+                top: '100%',
+                left: 0,
+                right: 0,
+                background: 'rgba(2, 6, 23, 0.95)',
+                backdropFilter: 'blur(10px)',
+                borderRadius: '0 0 1rem 1rem',
+                borderTop: '1px solid rgba(96, 165, 250, 0.1)',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+              }}
             >
-              <div className='pt-2 pb-3 space-y-1'>
-                {navItems.map((item) => (
-                  <a
+              <div className='py-3 space-y-1'>
+                {navItems.map((item, index) => (
+                  <motion.a
                     key={item.name}
                     href={item.href}
-                    className='block px-3 py-2 text-base font-medium text-blue-200/80 hover:text-yellow-400 transition-colors'
+                    onClick={(e) => handleNavClick(e, item.id)}
+                    className='block px-4 py-3 text-base font-medium text-blue-200/80 hover:text-yellow-400 hover:bg-blue-400/5 transition-all cursor-pointer'
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     {item.name}
-                  </a>
+                  </motion.a>
                 ))}
               </div>
             </motion.div>

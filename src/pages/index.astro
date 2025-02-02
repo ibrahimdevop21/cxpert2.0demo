@@ -30,8 +30,14 @@ const featuredServices = {
   <Navigation client:load />
   <main>
     <Hero client:load />
-    <OurPartners client:load />
-    <Testimonials client:load />
-    
+    <div id="about">
+      <OurPartners client:load />
+    </div>
+    <div id="services">
+      <Services />
+    </div>
+    <div id="testimonials">
+      <Testimonials client:load />
+    </div>
   </main>
 </Layout>

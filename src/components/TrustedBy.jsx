@@ -1,157 +1,188 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useEffect, useState } from 'react';
+import { motion, useAnimation, useInView } from 'framer-motion';
 
 export default function OurPartners() {
+  const carouselRef = useRef(null);
+  const isInView = useInView(carouselRef);
+  const controls = useAnimation();
+  const [isHovered, setIsHovered] = useState(false);
+
   const allLogos = [
-    { 
-      src: '/cx-logos/redington-green.svg', 
-      alt: 'Redington', 
+    {
+      src: '/cx-logos/redington-green.svg',
+      alt: 'Redington',
       description: 'Global Financial Services | Investment Solutions',
-      industry: 'Finance'
+      industry: 'Finance',
     },
-    { 
-      src: '/cx-logos/Orascom.webp', 
-      alt: 'Orascom', 
+    {
+      src: '/cx-logos/Orascom.webp',
+      alt: 'Orascom',
       description: 'Leading Construction & Development Group',
-      industry: 'Construction'
+      industry: 'Construction',
     },
-    { 
-      src: '/cx-logos/Hawana.png', 
-      alt: 'Hawana', 
+    {
+      src: '/cx-logos/Hawana.png',
+      alt: 'Hawana',
       description: 'Luxury Resort Development | Hospitality',
-      industry: 'Tourism'
+      industry: 'Tourism',
     },
-    { 
-      src: '/cx-logos/muriya.webp', 
-      alt: 'Muriya', 
+    {
+      src: '/cx-logos/muriya.webp',
+      alt: 'Muriya',
       description: 'Premium Tourism Development | Real Estate',
-      industry: 'Real Estate'
+      industry: 'Real Estate',
     },
-    { 
-      src: '/cx-logos/jebel-safeh.jpg', 
-      alt: 'Jebel Safeh', 
+    {
+      src: '/cx-logos/jebel-safeh.jpg',
+      alt: 'Jebel Safeh',
       description: 'Sustainable Mountain Tourism Development',
-      industry: 'Tourism'
+      industry: 'Tourism',
     },
-    { 
-      src: '/cx-logos/VOSKER_Logo.webp', 
-      alt: 'Vosker', 
+    {
+      src: '/cx-logos/VOSKER_Logo.webp',
+      alt: 'Vosker',
       description: 'Innovative Security Solutions Provider',
-      industry: 'Technology'
+      industry: 'Technology',
     },
-    { 
-      src: '/cx-logos/big-black-lemon.webp', 
-      alt: 'Lemon', 
+    {
+      src: '/cx-logos/big-black-lemon.webp',
+      alt: 'Lemon',
       description: 'Creative Digital Solutions Agency',
-      industry: 'Digital'
+      industry: 'Digital',
     },
-    { 
-      src: '/cx-logos/SpiroSpathislogo.webp', 
-      alt: 'Spiro', 
+    {
+      src: '/cx-logos/SpiroSpathislogo.webp',
+      alt: 'Spiro',
       description: 'Premium Lifestyle & Fashion Brand',
-      industry: 'Fashion'
+      industry: 'Fashion',
     },
-    { 
-      src: '/cx-logos/spypoint.svg', 
-      alt: 'Spypoint', 
+    {
+      src: '/cx-logos/spypoint.svg',
+      alt: 'Spypoint',
       description: 'Advanced Trail Camera Technology',
-      industry: 'Technology'
+      industry: 'Technology',
     },
-    { 
-      src: '/cx-logos/zhive.svg', 
-      alt: 'Zhive249', 
+    {
+      src: '/cx-logos/zhive.svg',
+      alt: 'Zhive249',
       description: 'Innovative Customer Experience Solutions',
-      industry: 'Technology'
-    }
+      industry: 'Technology',
+    },
   ];
 
+  // Duplicate logos for seamless infinite scroll
+  const duplicatedLogos = [...allLogos, ...allLogos];
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start('visible');
+    }
+  }, [isInView, controls]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
   return (
-    <section className="py-24 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent" />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section className='py-20 relative overflow-hidden' id='partners'>
+      <div className='absolute inset-0'>
+        <div className='absolute inset-0 ' />
+        <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(96,165,250,0.05),transparent_50%)]' />
+      </div>
+
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className='text-center mb-16'
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-yellow-400 text-transparent bg-clip-text">
-            Our Partners
+          <span className='text-sm font-semibold text-blue-400/80 tracking-wider uppercase mb-4 block'>
+            Trusted Worldwide
+          </span>
+          <h2 className='text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-yellow-400 text-transparent bg-clip-text'>
+            Partnering with Industry Leaders
           </h2>
-          <p className="text-lg text-blue-200/80 max-w-2xl mx-auto">
-            Collaborating with industry leaders to deliver exceptional experiences
+          <p className='text-base md:text-lg text-blue-200/60 max-w-2xl mx-auto'>
+            We collaborate with forward-thinking companies to transform their
+            customer experience
           </p>
         </motion.div>
 
-        {/* Mask container */}
-        <div className="relative py-12">
-          <div className="relative overflow-hidden">
-            <div className="flex space-x-8 animate-scroll">
-              {[...allLogos, ...allLogos].map((logo, index) => (
+        {/* Carousel Container */}
+        <div
+          className='relative'
+          ref={carouselRef}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <div className='overflow-hidden'>
+            <motion.div
+              className={`flex gap-6 py-8 ${
+                !isHovered ? 'animate-scroll' : ''
+              }`}
+              initial={{ x: 0 }}
+              animate={{ x: '-50%' }}
+              transition={{
+                duration: 40,
+                ease: 'linear',
+                repeat: Infinity,
+              }}
+            >
+              {duplicatedLogos.map((logo, index) => (
                 <motion.div
                   key={index}
-                  className="shrink-0 group relative px-4"
-                  whileHover={{ 
-                    scale: 1.02,
-                    transition: { 
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 20 
-                    }
+                  className='shrink-0 relative group'
+                  whileHover={{
+                    scale: 1.05,
+                    transition: { duration: 0.3, ease: 'easeOut' },
                   }}
                 >
-                  <div className="relative">
-                    {/* Subtle glow effect */}
-                    <div className="absolute -inset-[1px] bg-gradient-to-r from-blue-400/30 via-yellow-400/30 to-blue-400/30 rounded-xl opacity-0 group-hover:opacity-100 blur-sm transition duration-500" />
-                    
-                    <div className="w-80 rounded-xl bg-gradient-to-br from-white/[0.05] to-white/[0.01] backdrop-blur-sm border border-white/[0.05] overflow-hidden relative">
-                      <div className="w-full flex flex-col">
-                        {/* Logo Container */}
-                        <div className="h-32 p-6 flex items-center justify-center bg-gradient-to-b from-blue-950/20 to-transparent">
-                          <img
-                            src={logo.src}
-                            alt={logo.alt}
-                            className="max-w-[180px] max-h-[80px] object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-105 brightness-0 invert opacity-60 group-hover:opacity-100"
-                          />
-                        </div>
-                        
-                        {/* Description */}
-                        <div className="p-6 pt-4">
-                          <div className="flex items-center justify-between mb-3">
-                            <p className="text-base font-medium text-blue-100 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-yellow-400 group-hover:bg-clip-text transition-all duration-300">
-                              {logo.alt}
-                            </p>
-                            <span className="px-3 py-1 text-[10px] uppercase tracking-wider font-medium text-yellow-400/80 bg-yellow-400/[0.03] rounded-full border border-yellow-400/[0.06]">
-                              {logo.industry}
-                            </span>
-                          </div>
-                          <p className="text-sm text-blue-300/50 group-hover:text-blue-200/70 line-clamp-2 transition-colors duration-300">
-                            {logo.description}
-                          </p>
-                        </div>
+                  <div className='w-[280px] h-[200px] rounded-xl overflow-hidden bg-gradient-to-br from-blue-900/40 to-blue-800/40 backdrop-blur-sm border border-blue-400/10 transition-all duration-300 group-hover:border-blue-400/30'>
+                    <div className='h-full p-6 flex flex-col items-center justify-between'>
+                      {/* Logo Container */}
+                      <div className='w-full h-20 flex items-center justify-center'>
+                        <img
+                          src={logo.src}
+                          alt={logo.alt}
+                          className='max-w-[140px] max-h-[60px] object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105'
+                        />
                       </div>
 
-                      {/* Subtle highlight */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-400/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      {/* Info */}
+                      <div className='text-center mt-4'>
+                        <h3 className='text-blue-100 font-medium mb-2 transition-all duration-300 group-hover:text-blue-400'>
+                          {logo.alt}
+                        </h3>
+                        <span className='inline-block px-3 py-1 text-xs uppercase tracking-wider font-medium text-yellow-400/90 bg-yellow-400/10 rounded-full transition-all duration-300 group-hover:bg-yellow-400/20'>
+                          {logo.industry}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
               ))}
-            </div>
-
-            {/* Fade Edges */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#020617] to-transparent z-10" />
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#020617] to-transparent z-10" />
+            </motion.div>
           </div>
+
+          {/* Gradient Masks */}
+          <div className='pointer-events-none absolute inset-y-0 left-0 w-[100px] bg-gradient-to-r from-blue-950 via-blue-950/80 to-transparent' />
+          <div className='pointer-events-none absolute inset-y-0 right-0 w-[100px] bg-gradient-to-l from-blue-950 via-blue-950/80 to-transparent' />
         </div>
       </div>
 
       <style jsx>{`
         .animate-scroll {
           animation: scroll 40s linear infinite;
+          will-change: transform;
         }
 
         @keyframes scroll {
@@ -159,18 +190,14 @@ export default function OurPartners() {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-50% - 2rem));
+            transform: translateX(calc(-50% - 1.5rem));
           }
         }
 
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-
-        /* Hide overflowing content */
-        .overflow-hidden {
-          mask-image: linear-gradient(to right, transparent, black 72px, black calc(100% - 72px), transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 72px, black calc(100% - 72px), transparent);
+        @media (max-width: 640px) {
+          .animate-scroll {
+            animation-duration: 30s;
+          }
         }
       `}</style>
     </section>
